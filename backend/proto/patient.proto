@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package chaincare.patient.v1;
+
+option go_package = "chaincare/backend/proto/patient;patientpb";
+
+message Patient {
+  string id = 1;
+  string wallet_address = 2;
+  string encrypted_nik = 3;
+  string encrypted_name = 4;
+  string encrypted_dob = 5;
+  string encrypted_blood_type = 6;
+  string created_at = 7;
+  string updated_at = 8;
+}
+
+message CreatePatientRequest {
+  string wallet_address = 1;
+  string encrypted_nik = 2;
+  string encrypted_name = 3;
+  string encrypted_dob = 4;
+  string encrypted_blood_type = 5;
+}
+
+message CreatePatientResponse {
+  Patient patient = 1;
+}
+
+message GetPatientByWalletRequest {
+  string wallet_address = 1;
+}
+
+message GetPatientResponse {
+  Patient patient = 1;
+}
+
+service PatientService {
+  rpc CreatePatient(CreatePatientRequest) returns (CreatePatientResponse);
+  rpc GetPatientByWallet(GetPatientByWalletRequest) returns (GetPatientResponse);
+}

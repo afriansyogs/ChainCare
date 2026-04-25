@@ -1,5 +1,7 @@
 bin/
 /main
+tmp/
+*.pb.go
 /api
 *.exe
 *.exe~
