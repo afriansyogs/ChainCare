@@ -1,46 +1,42 @@
-# ChainCare - Web3 Electronic Medical Record (EMR)
+# 🏥 ChainCare - Web3 Electronic Medical Record (EMR)
 
-ChainCare adalah platform pengelolaan rekam medis elektronik (EMR) yang dirancang dengan arsitektur microservices modern dan mengintegrasikan teknologi Web3 untuk keamanan data pasien. Proyek ini memprioritaskan privasi data melalui enkripsi dan identitas berbasis dompet digital (Wallet Address).
+ChainCare is an Electronic Medical Record (EMR) platform built on a modern microservices architecture, integrating Web3 technology to ensure patient data security. The project prioritizes data privacy through database-level encryption and wallet-based identity.
 
-## Gambaran Proyek
+## ✨ Key Features
 
-Tujuan utama ChainCare adalah memecahkan masalah fragmentasi data medis. Dengan menggunakan ChainCare, data pasien tidak hanya tersimpan di satu rumah sakit, tetapi terhubung secara aman menggunakan identitas blockchain, sementara data sensitif tetap terenkripsi di sisi server.
+- **🔐 Web3 Identity:** Patient authentication and identification via Wallet Address.
+- **🛡️ Data Encryption:** Sensitive information is stored in an encrypted format.
+- **🧩 Microservices Architecture:** Decoupled services (Core Service & API Gateway) for high scalability.
+- **⚡ gRPC Communication:** Efficient inter-service data exchange using Protocol Buffers.
 
-### Fitur Utama
-- **Identitas Web3:** Login dan identifikasi pasien menggunakan Wallet Address.
-- **Data Terenkripsi:** Informasi sensitif seperti NIK dan Nama disimpan dalam bentuk terenkripsi.
-- **Arsitektur Microservices:** Pemisahan layanan (Core Service & API Gateway) untuk skalabilitas tinggi.
-- **Komunikasi gRPC:** Pertukaran data antar-layanan menggunakan Protocol Buffers (Protobuf) yang jauh lebih cepat dibanding REST JSON konvensional.
+## 🏗️ System Architecture
 
-## Arsitektur Sistem
+The project utilizes external REST APIs for client requests and internal gRPC for service-to-service communication.
 
-Proyek ini menggunakan pola komunikasi internal gRPC dan eksternal REST API.
+- **💻 Client:** Next.js
+- **🚪 API Gateway:** REST to gRPC translation layer.
+- **⚙️ Core Service:** Golang-based service handling business logic and database transactions.
+- **🗄️ Database:** PostgreSQL with GORM.
 
-- **Client:** Next.js (React Framework) untuk antarmuka pengguna.
-- **API Gateway:** Entry point yang mengubah request REST dari frontend menjadi panggilan gRPC internal.
-- **Core Service:** Layanan utama berbasis Golang yang menangani logika bisnis dan interaksi database PostgreSQL.
-- **Database:** PostgreSQL dengan integrasi GORM untuk manajemen skema otomatis.
+## 🛠️ Tech Stack
 
-## Teknologi yang Digunakan
-
-| Komponen | Teknologi |
+| Component | Technology |
 | --- | --- |
 | **Language** | Golang |
 | **Transport Layer** | gRPC, Protocol Buffers v3 |
 | **Database ORM** | GORM (PostgreSQL Driver) |
 | **Containerization** | Docker, Docker Compose |
-| **Live Reload (Dev)** | Air (Golang Hot Reload) |
+| **Live Reload** | Air |
 | **Frontend** | Next.js, TypeScript |
 
-## Struktur Folder
-
-```
+## 📂 Repository Structure
+```text
 .
 ├── backend/
-│   ├── pkg/             # Kode yang bisa digunakan berulang (shared library)
-│   ├── proto/           # Definisi kontrak gRPC (.proto files)
+│   ├── pkg/             
+│   ├── proto/           
 │   └── services/
-│       └── core-service/# Layanan pusat data pasien
-├── client/              # Frontend Next.js
-├── docker-compose.yml   # Orchestrasi container
-└── .env                 # Konfigurasi environment (tidak masuk git)
+│       └── core-service/
+├── client/              
+├── docker-compose.yml   
+└── .env
